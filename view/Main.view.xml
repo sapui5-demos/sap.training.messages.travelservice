@@ -1,0 +1,55 @@
+<mvc:View controllerName="sap.training.messages.travelservice.view.Main" xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form"
+	xmlns:html="http://www.w3.org/1999/xhtml" xmlns:l="sap.ui.layout" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m">
+	<l:VerticalLayout width="100%">
+		<l:content>
+			<Panel class="sapUiResponsiveMargin" headerText="{i18n>automaticMessagesPanelHeader}" width="auto">
+				<content>
+					<f:SimpleForm>
+						<f:content>
+							<Label text="{i18n>carrierIdLabelText}"/>
+							<Input  id="carrierIdInput"
+							        value="{ path: 'input>/carrierId',
+							                 type: 'sap.ui.model.type.String',
+							                 constraints: {minLength: 1, maxLength: 3} }"/>
+							<Button press="onShowCarrier" text="{i18n>showCarrierButtonText}" type="Emphasized"/>
+						</f:content>
+					</f:SimpleForm>
+					<f:SimpleForm>
+						<f:content>
+							<Label text="{i18n>nameLabelText}"/>
+							<Input id="carrierNameInput" value="{travel>Carrname}"/>
+						</f:content>
+					</f:SimpleForm>
+				</content>
+			</Panel>
+			<Panel class="sapUiResponsiveMargin" headerText="{i18n>creatingMessagesPanelHeader}" width="auto">
+				<content>
+					<f:SimpleForm>
+						<f:content>
+							<Label text="{i18n>messageLabelText}"/>
+							<Input value="{input>/message}"/>
+							<Label text="{i18n>msgDescriptionLabelText}"/>
+							<Input value="{input>/description}"/>
+							<Label text="{i18n>msgTypeLabelText}"/>
+							<ComboBox items="{msgTypes>/msgTypes}" value="{input>/messageType}">
+								<items><core:Item key="{msgTypes>key}" text="{msgTypes>text}"/></items>
+							</ComboBox>
+							<Label text="{i18n>msgTargetLabelText}"/>
+							<CheckBox selected="{input>/withTarget}"/>
+							<Label text="{i18n>msgPersistentLabelText}"/>
+							<CheckBox selected="{input>/isPersistent}"/>
+						</f:content>
+					</f:SimpleForm>
+					<Button press="onCreateUIMessage" text="{i18n>createUIMessageButtonText}" type="Accept"/>
+					<Button press="onCreateServerMessage" text="{i18n>createServerMessageButtonText}" type="Accept"/>
+				</content>
+			</Panel>
+			<Panel class="sapUiResponsiveMargin" width="auto">
+				<content>
+					<Button id="idDisplayMessagesButton" press="onDisplayMessages" text="{i18n>displayMessagesButtonText}" type="Reject"/>
+					<Button press="onRemoveMessages" text="{i18n>removeMessagesButtonText}" type="Reject"/>
+				</content>
+			</Panel>
+		</l:content>
+	</l:VerticalLayout>
+</mvc:View>
